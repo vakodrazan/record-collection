@@ -41,3 +41,54 @@ const artistRecords = [
         releaseYear: 2016
     },
 ];
+
+let menuChoice = `Choose an option:
+
+1: Show all records
+2: Add a new record
+3: Update a specific record
+4: Remove a record
+5: Quit
+`;
+
+const recordsList = () => {
+    for (let i = 0; i < artistRecords.length; i++) {
+        let records = `Title: ${artistRecords[i].title}
+Name: ${artistRecords[i].name}
+Tracks' number: ${artistRecords[i].numberOfTrack}
+URL: ${artistRecords[i].url}
+Release year: ${artistRecords[i].releaseYear}
+        `;
+        alert(records)
+    }
+}
+
+let menuList = Number(prompt(menuChoice));
+
+while (menuList !== 5) {
+    switch (menuList) {
+        case 1:
+        recordsList()
+            break;
+    
+            case 2:
+
+            break;
+
+            case 3:
+                
+            break;
+
+            case 4:
+            break;
+
+        default:
+            alert('Please enter a number between 1 and 5. (1, 2, 3, 4, 5)');
+            break;
+    }
+
+    menuList = Number(prompt(menuChoice));
+
+}
+
+alert("Thank you for using my program");
