@@ -42,15 +42,6 @@ const artistRecords = [
     },
 ];
 
-let menuChoice = `Choose an option:
-
-1: Show all records
-2: Add a new record
-3: Update a specific record
-4: Remove a record
-5: Quit
-`;
-
 const recordsList = () => {
     for (let i = 0; i < artistRecords.length; i++) {
         let records = `Title: ${artistRecords[i].title}
@@ -61,26 +52,54 @@ Release year: ${artistRecords[i].releaseYear}
         `;
         alert(records)
     }
-}
+};
+
+const addNewRecord = () => {
+    let newTitle = prompt("Enter your a title of your new record");
+    let newName = prompt("Enter your a name of your new record");
+    let newNumberOfTrack = Number(prompt("How many tracks does it have"));
+    let newUrl = prompt("Enter their URL");
+    let newReleaseYear = Number(prompt("When did it release? Enter the release year"));
+
+    if (!newUrl.startsWith("http://") && !newUrl.startsWith("https://")) {
+        newUrl = `https://${newUrl}`;
+    };
+
+    const newRecords = {
+        title: newTitle,
+        name: newName,
+        numberOfTrack: newNumberOfTrack,
+        url: newUrl,
+        releaseYear: newReleaseYear
+    };
+    artistRecords.push(newRecords);
+};
+
+
+let menuChoice = `Choose an option:
+
+1: Show all records
+2: Add a new record
+3: Update a specific record
+4: Remove a record
+5: Quit
+`;
 
 let menuList = Number(prompt(menuChoice));
 
 while (menuList !== 5) {
     switch (menuList) {
         case 1:
-        recordsList()
-            break;
-    
-            case 2:
-
+            recordsList();
             break;
 
-            case 3:
+        case 2:
+            addNewRecord();
+            break;
+
+        // case 3:
                 
-            break;
-
-            case 4:
-            break;
+        //     break;
 
         default:
             alert('Please enter a number between 1 and 5. (1, 2, 3, 4, 5)');
