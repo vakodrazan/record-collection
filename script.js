@@ -101,6 +101,17 @@ while (menuList !== 5) {
                 
         //     break;
 
+        case 4:
+            let deletedRecordResult = prompt(`Enter the number of index you want to delete (1 to ${artistRecords.length})`);
+             let deletedRecordResult = `Title: ${deleteRecord[0].title}
+Name: ${deleteRecord[0].name}
+Tracks' number: ${deleteRecord[0].numberOfTrack}
+URL: ${deleteRecord[0].url}
+Release year: ${deleteRecord[0].releaseYear}
+            `;
+            alert(deletedRecordResult);
+            break;
+
         default:
             alert('Please enter a number between 1 and 5. (1, 2, 3, 4, 5)');
             break;
