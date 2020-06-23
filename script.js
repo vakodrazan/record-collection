@@ -75,6 +75,46 @@ const addNewRecord = () => {
     artistRecords.push(newRecords);
 };
 
+const updateRecord = () => {
+    let update = prompt(`Enter the number of index you want to delete (1 to ${artistRecords.length})`);
+    let updateRecord = artistRecords.splice(update --, 1);
+
+    console.log(updateRecord);
+
+    let updateTitle = prompt("Enter your a new title that you want to update");
+    let updateName = prompt("Enter your new update name");
+    let updateNumberOfTrack = Number(prompt("How many tracks does it have"));
+    let updateUrl = prompt("Enter their URL");
+    let updateReleaseYear = Number(prompt("Update the release year"));
+
+    if (!updateUrl.startsWith("http://") && !updateUrl.startsWith("https://")) {
+        updateUrl = `https://${updateUrl}`;
+    };
+
+    const updatedRecords = {
+        title: updateTitle,
+        name: updateName,
+        numberOfTrack: updateNumberOfTrack,
+        url: updateUrl,
+        releaseYear: updateReleaseYear
+    };
+    artistRecords.push(updatedRecords);
+};
+
+const removeRecord = () => {
+
+
+    let deleteRecord = prompt(`Enter the number of index you want to delete (1 to ${artistRecords.length})`);
+
+    let deletedRecordResult = `Title: ${deleteRecord[0].title}
+Name: ${deleteRecord[0].name}
+Tracks' number: ${deleteRecord[0].numberOfTrack}
+URL: ${deleteRecord[0].url}
+Release year: ${deleteRecord[0].releaseYear}
+   `;
+
+   alert(deletedRecordResult);
+}
 
 let menuChoice = `Choose an option:
 
@@ -97,19 +137,12 @@ while (menuList !== 5) {
             addNewRecord();
             break;
 
-        // case 3:
-                
-        //     break;
+        case 3:
+            updateRecord();
+            break;
 
         case 4:
-            let deletedRecordResult = prompt(`Enter the number of index you want to delete (1 to ${artistRecords.length})`);
-             let deletedRecordResult = `Title: ${deleteRecord[0].title}
-Name: ${deleteRecord[0].name}
-Tracks' number: ${deleteRecord[0].numberOfTrack}
-URL: ${deleteRecord[0].url}
-Release year: ${deleteRecord[0].releaseYear}
-            `;
-            alert(deletedRecordResult);
+            removeRecord();
             break;
 
         default:
