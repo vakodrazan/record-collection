@@ -44,11 +44,16 @@ const artistRecords = [
 
 const recordsList = () => {
     for (let i = 0; i < artistRecords.length; i++) {
-        let records = `Title: ${artistRecords[i].title}
-Name: ${artistRecords[i].name}
-Tracks' number: ${artistRecords[i].numberOfTrack}
-URL: ${artistRecords[i].url}
-Release year: ${artistRecords[i].releaseYear}
+
+// To sort the record from the oldest to the newest
+        
+        const sortRecord = artistRecords.slice().sort((a, b) => b.releaseYear - a.releaseYear)
+
+        let records = `Title: ${sortRecord[i].title}
+Name: ${sortRecord[i].name}
+Tracks' number: ${sortRecord[i].numberOfTrack}
+URL: ${sortRecord[i].url}
+Release year: ${sortRecord[i].releaseYear}
         `;
         alert(records)
     }
@@ -75,9 +80,11 @@ const addNewRecord = () => {
     artistRecords.push(newRecords);
 };
 
+// Ask the user if they want to update one of the record
+
 const updateRecord = () => {
-    let update = prompt(`Enter the number of index you want to delete (1 to ${artistRecords.length})`);
-    let updateRecord = artistRecords.splice(update --, 1);
+    let updateChoice = prompt(`Enter the number of index you want to update (1 to ${artistRecords.length})`);
+    let updateRecord = artistRecords.splice(updateChoice -=1, 1);
 
     console.log(updateRecord);
 
@@ -87,9 +94,13 @@ const updateRecord = () => {
     let updateUrl = prompt("Enter their URL");
     let updateReleaseYear = Number(prompt("Update the release year"));
 
+// If the url doen't start with http://
+
     if (!updateUrl.startsWith("http://") && !updateUrl.startsWith("https://")) {
         updateUrl = `https://${updateUrl}`;
     };
+
+// Call the updated record
 
     const updatedRecords = {
         title: updateTitle,
